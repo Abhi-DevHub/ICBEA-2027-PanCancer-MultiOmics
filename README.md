@@ -217,20 +217,6 @@ The ORA implementation (`src/ora_from_shap.py`) requires an external human
 CellMarker gene list that is not redistributed here (see `data/README.md`); its
 outputs are reported in the paper.
 
-## Citation
-
-```bibtex
-@inproceedings{icbea2027pancancer,
-  title     = {Lineage-Associated Interpretable Pan-Cancer Tumor-Type
-               Classification using Multi-Omics Data},
-  author    = {Anil, Akhilesh and others},
-  booktitle = {International Conference on Biomedical Engineering and Applications (ICBEA)},
-  year      = {2027}
-}
-```
-
-> Replace with the final published citation when available.
-
 ## License
 
 Released under the MIT License. See `LICENSE`.
