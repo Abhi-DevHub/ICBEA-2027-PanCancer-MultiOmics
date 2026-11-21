@@ -35,3 +35,7 @@ kappa_err.log
 notebooks/*.csv
 notebooks/*.png
 notebooks/*.json
+
+# External CellMarker gene-set library (download separately) and ORA run outputs
+human_cell_marker_/
+ORA_results/

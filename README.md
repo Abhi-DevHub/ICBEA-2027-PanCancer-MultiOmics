@@ -58,6 +58,12 @@ The **MLOmics: Cancer Multi-Omics Database for Machine Learning** benchmark
 > `Pan-cancer` matrices from the source above and place them in the repository
 > root (or set the `DATA_DIR` environment variable to their location).
 
+**External gene-set library (for ORA).** `src/ora_from_shap.py` additionally
+needs a human cell-marker list from **CellMarker 2.0** (Hu et al., *Nucleic Acids
+Research* 51:D870–D876, 2023), saved as
+`human_cell_marker_/human_cell_marker.txt` (tab-delimited, with `cell_name` and
+`symbol` columns). This file is not redistributed here — see `data/README.md`.
+
 ## Repository Structure
 
 ```
@@ -76,6 +82,7 @@ The **MLOmics: Cancer Multi-Omics Database for Machine Learning** benchmark
 │   ├── metrics_kappa.py              # Cohen's κ + macro-F1 (4 models)
 │   ├── ablation_mrna.py              # mRNA-only vs full multi-omics
 │   ├── make_class_mapping.py         # class 0–31 → TCGA code → cancer name
+│   ├── ora_from_shap.py              # ORA: top-N SHAP mRNA genes vs CellMarker
 │   └── check_env.py                  # environment / dependency check
 ├── configs/
 │   ├── environment-cpu.yml
@@ -130,7 +137,18 @@ python src/ablation_mrna.py
 
 # 6) Class 0–31 → TCGA project → cancer name
 python src/make_class_mapping.py
+
+# 7) Over-representation analysis (see note below on required inputs)
+python src/ora_from_shap.py --top 100,150,200
 ```
+
+> **ORA inputs.** `src/ora_from_shap.py` expects `Pan-cancer_mRNA.csv` and
+> `shap_top20.csv` in the **current working directory**, plus the human
+> CellMarker gene list at `human_cell_marker_/human_cell_marker.txt`
+> (tab-delimited, with `cell_name` and `symbol` columns). The CellMarker file
+> must be downloaded separately — see `data/README.md`. Outputs (raw/adjusted/
+> significant tables, `ranked_mrna_shap.csv`, top-N gene lists and dot plots)
+> are written to `ORA_results/`.
 
 Or run the notebook end-to-end:
 
@@ -191,10 +209,13 @@ macro average precision 0.9872.
 ## Scope
 
 This release covers preprocessing, the four-classifier benchmark, statistical
-validation, the single-modality ablation, class mapping, and SHAP
-interpretability. The over-representation analysis (ORA) was contributed
-separately by a co-author and is not included in this repository; its results are
-reported in the paper.
+validation, the single-modality ablation, class mapping, SHAP interpretability,
+and the over-representation analysis (ORA) of the top SHAP-ranked mRNA genes
+against curated cell-type markers.
+
+The ORA implementation (`src/ora_from_shap.py`) requires an external human
+CellMarker gene list that is not redistributed here (see `data/README.md`); its
+outputs are reported in the paper.
 
 ## Citation
 

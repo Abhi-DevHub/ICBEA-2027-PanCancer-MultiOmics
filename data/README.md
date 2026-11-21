@@ -37,3 +37,33 @@ After the inner join on TCGA sample identifiers the cohort is
 - Scripts: accept `--data-dir`, then `DATA_DIR`, then a local fallback.
 
 No credentials or tokens are required, and none are stored in this repository.
+
+---
+
+## CellMarker gene-set library (required for ORA only)
+
+`src/ora_from_shap.py` needs a human cell-marker list.
+
+**Source:** CellMarker 2.0 — Hu, C. et al. "CellMarker 2.0: an updated database of
+manually curated cell markers in human/mouse and web tools based on scRNA-seq
+data." *Nucleic Acids Research* 51(D1):D870–D876 (2023).
+Portal: http://bio-bigdata.hrbmu.edu.cn/CellMarker/
+
+**Expected location and format:**
+
+```
+human_cell_marker_/human_cell_marker.txt
+```
+
+A **tab-delimited** file whose header includes at least `cell_name` and `symbol`
+columns (e.g. the "Cell_markers.txt" export for *Human*). The script groups gene
+symbols by `cell_name` and tests each group.
+
+This file is **not** redistributed in this repository (external resource, own
+licence). Download it from the portal above, or cite it and point `--cellmarker`
+at your local copy:
+
+```bash
+python src/ora_from_shap.py --top 100,150,200 --cellmarker /path/to/human_cell_marker.txt
+```
+

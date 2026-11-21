@@ -81,8 +81,27 @@ Holdout and CV accuracy and macro-F1 are reported for both.
 
 ## 7. Over-representation analysis (ORA)
 
-The ORA step (top-150 SHAP mRNA genes tested with a hypergeometric test against
-curated cell-type markers, with the background restricted to the 3,217 measured
-mRNA genes, Benjamini–Hochberg FDR correction) was contributed separately by a
-co-author and is **not** included in this repository. Its results are reported in
-the paper.
+Implemented in `src/ora_from_shap.py`.
+
+1. The SHAP ranking from step 6 is filtered to mRNA features (`_mRNA` suffix) and
+   re-ranked by mean |SHAP| → `ORA_results/ranked_mrna_shap.csv`.
+2. Top-N gene lists (default **N = 100, 150, 200**) are written to
+   `ORA_results/top_{N}_genes.txt`.
+3. Enrichment of each list is tested against human cell-type marker sets from
+   **CellMarker 2.0** using an exact **hypergeometric** test.
+4. The background universe is restricted to the **3,217 mRNA genes actually
+   measured** in the dataset — not the whole genome — so unmeasured targets
+   cannot inflate significance.
+5. p-values are corrected with the **Benjamini–Hochberg** FDR. Results are
+   reported on the −log10(adjusted p) scale; the paper's 1.5 threshold on this
+   scale corresponds to an FDR of ≈0.03.
+6. Outputs in `ORA_results/`: `ora_top{N}_raw.csv`, `ora_top{N}_adj.csv`,
+   `ora_top{N}_significant.csv`, `ora_top{N}_dotplot.png`, `ORA_metadata.json`.
+
+```bash
+python src/ora_from_shap.py --top 100,150,200
+```
+
+> Requires `Pan-cancer_mRNA.csv` and `shap_top20.csv` in the working directory,
+> and the CellMarker list at `human_cell_marker_/human_cell_marker.txt`
+> (see `data/README.md`).

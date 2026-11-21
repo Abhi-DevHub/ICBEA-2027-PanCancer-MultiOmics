@@ -17,6 +17,21 @@ output consumed by the paper's tables.
 | `roc_auc.csv` | `interpret_xgboost.py` | per-class and macro one-vs-rest ROC-AUC |
 | `pr_curve.csv` | `interpret_xgboost.py` | per-class and macro average precision |
 
+ORA outputs (`ora_from_shap.py`, written to `ORA_results/`):
+
+| File | Contents |
+|---|---|
+| `ranked_mrna_shap.csv` | mRNA features ranked by mean \|SHAP\| |
+| `top_{N}_genes.txt` | top-N gene lists (N = 100, 150, 200) |
+| `ora_top{N}_raw.csv` | raw hypergeometric p-values per cell type |
+| `ora_top{N}_adj.csv` | Benjamini–Hochberg adjusted p-values |
+| `ora_top{N}_significant.csv` | sets with adj. p ≤ 0.05 |
+| `ora_top{N}_dotplot.png` | ORA dot plot (top 20 cell types) |
+| `ORA_metadata.json` | parameters used for the run |
+
+> `ORA_results/` is generated at run time and is not pre-populated, because the
+> CellMarker library must be obtained separately.
+
 Figures in `figures/`:
 
 `pipeline_overview.png`, `confusion_matrices_5fold.png`, `feature_importance.png`,
