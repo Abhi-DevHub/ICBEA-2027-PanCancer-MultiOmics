@@ -1,0 +1,14 @@
+# Core scientific stack (versions used to produce the published results)
+numpy==2.3.2
+pandas==2.3.1
+scikit-learn==1.9.0
+xgboost==3.4.1
+scipy==1.18.0
+matplotlib==3.11.1
+seaborn==0.13.2
+shap==0.52.0
+
+# Notebook execution
+jupyter
+nbconvert
+ipykernel

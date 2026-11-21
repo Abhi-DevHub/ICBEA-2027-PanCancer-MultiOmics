@@ -1,0 +1,27 @@
+# GPU environment (recommended on Linux/WSL2). RAPIDS/cuML is not supported natively on Windows.
+# You MUST edit `cuda-version` to match your NVIDIA driver/CUDA runtime (see RUN_ON_NEW_MACHINE.md).
+# Create: conda env create -f environment-gpu.yml
+
+name: pan-cancer-ml-gpu
+channels:
+  - rapidsai
+  - nvidia
+  - conda-forge
+dependencies:
+  - python=3.10
+  - numpy
+  - pandas
+  - scikit-learn
+  - matplotlib
+  - seaborn
+  - jupyter
+  - ipykernel
+  # RAPIDS
+  - rapids=24.10
+  - cuml=24.10
+  - cudf=24.10
+  - cupy
+  # Set CUDA version that matches your system (examples: 11.8, 12.1)
+  - cuda-version=12.1
+  # XGBoost; conda-forge builds typically include GPU support on Linux
+  - xgboost

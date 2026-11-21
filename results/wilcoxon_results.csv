@@ -1,0 +1,5 @@
+metric,n,W,p,mean_delta,xgb_mean,lr_mean,conclusion
+precision_weighted,25,325.0,0.0,0.01125,0.97705,0.9658,XGBoost significantly better
+f1_weighted,25,325.0,0.0,0.01089,0.97614,0.96525,XGBoost significantly better
+accuracy,25,325.0,6e-06,0.01051,0.9765,0.96599,XGBoost significantly better
+kappa,25,325.0,0.0,0.01102,0.97536,0.96434,XGBoost significantly better
