@@ -1,0 +1,284 @@
+% =====================================================================
+% ICBEA 2027 — Reviewer-response LaTeX package
+% Generated from revision_*.csv (all CV now runs INSIDE the 80% train split)
+% Paste each block into the marked place in the Overleaf source.
+% =====================================================================
+
+
+% ---------------------------------------------------------------------
+% [1] REPLACE Table II  (tab:cv) — CV inside training split
+% ---------------------------------------------------------------------
+\begin{table}[htbp]
+\caption{Five-fold stratified cross-validation results (cross-validation performed
+within the 80\% training partition). Values are mean $\pm$ standard deviation over folds.}
+\label{tab:cv}
+\centering
+\footnotesize
+\begin{tabular}{lcccc}
+\toprule
+Model & Precision & F1 & Accuracy & Macro-F1 \\
+\midrule
+XGBoost & \textbf{0.9730}$\pm$0.0030 & \textbf{0.9719}$\pm$0.0033 & \textbf{0.9725}$\pm$0.0032 & \textbf{0.9443}$\pm$0.0184 \\
+SVM & 0.9665$\pm$0.0045 & 0.9656$\pm$0.0045 & 0.9663$\pm$0.0044 & 0.9405$\pm$0.0182 \\
+Logistic Regression & 0.9625$\pm$0.0059 & 0.9618$\pm$0.0058 & 0.9626$\pm$0.0056 & 0.9290$\pm$0.0206 \\
+Random Forest & 0.9542$\pm$0.0042 & 0.9469$\pm$0.0040 & 0.9511$\pm$0.0041 & 0.8879$\pm$0.0066 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+% ---------------------------------------------------------------------
+% [2] REPLACE Table III (tab:kappa) — holdout columns unchanged (they were
+%     always leakage-free); CV columns updated
+% ---------------------------------------------------------------------
+\begin{table}[htbp]
+\caption{Holdout and cross-validated Cohen's $\kappa$ and macro-F1
+(cross-validation within the 80\% training partition).}
+\label{tab:kappa}
+\centering
+\footnotesize
+\begin{tabular}{lcccc}
+\toprule
+Model & Hold. $\kappa$ & Hold. macro-F1 & CV $\kappa$ & CV macro-F1 \\
+\midrule
+XGBoost & \textbf{0.9767} & \textbf{0.9534} & \textbf{0.9712}$\pm$0.0033 & \textbf{0.9443}$\pm$0.0184 \\
+SVM & 0.9685 & 0.9315 & 0.9647$\pm$0.0046 & 0.9405$\pm$0.0182 \\
+Logistic Regression & 0.9641 & 0.9080 & 0.9608$\pm$0.0058 & 0.9290$\pm$0.0206 \\
+Random Forest & 0.9546 & 0.8945 & 0.9487$\pm$0.0043 & 0.8879$\pm$0.0066 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+% ---------------------------------------------------------------------
+% [3] NEW — per-class table (reviewer comment 3). Full-width,
+%     two side-by-side blocks to save vertical space.
+%     Supports are the TRAIN-partition counts (6,651 samples, pooled 5-fold CV).
+% ---------------------------------------------------------------------
+\begin{table*}[htbp]
+\caption{Per-class precision, recall and F1 for XGBoost under pooled 5-fold
+cross-validation within the training partition (6{,}651 samples). TCGA project
+codes are given for reference.}
+\label{tab:perclass}
+\centering
+\footnotesize
+\begin{tabular}{lcccc|cccc}
+\toprule
+TCGA & N & Prec. & Rec. & F1 & TCGA & N & Prec. & Rec. & F1 \\
+\midrule
+ACC  & 61  & 0.952 & 0.967 & 0.959 & MESO & 70  & 0.985 & 0.929 & 0.956 \\
+BLCA & 321 & 0.975 & 0.981 & 0.978 & OV   & 7   & 1.000 & \textbf{0.429} & 0.600 \\
+BRCA & 605 & 0.993 & 0.997 & 0.995 & PAAD & 141 & 0.979 & 0.979 & 0.979 \\
+CESC & 233 & 0.978 & 0.949 & 0.963 & PCPG & 129 & 0.992 & 0.977 & 0.984 \\
+CHOL & 29  & 0.962 & 0.862 & 0.909 & PRAD & 387 & 0.995 & 1.000 & 0.997 \\
+COAD & 228 & 0.869 & 0.956 & 0.910 & READ & 73  & 0.824 & \textbf{0.575} & 0.677 \\
+DLBC & 38  & 0.881 & 0.974 & 0.925 & SARC & 200 & 0.933 & 0.980 & 0.956 \\
+ESCA & 144 & 0.914 & 0.889 & 0.901 & SKCM & 281 & 0.986 & 0.982 & 0.984 \\
+HNSC & 405 & 0.993 & 0.990 & 0.991 & STAD & 292 & 0.943 & 0.956 & 0.949 \\
+KICH & 52  & 0.962 & 0.981 & 0.971 & TGCT & 106 & 0.991 & 0.981 & 0.986 \\
+KIRC & 245 & 0.971 & 0.955 & 0.963 & THCA & 395 & 1.000 & 0.998 & 0.999 \\
+KIRP & 214 & 0.967 & 0.953 & 0.960 & THYM & 95  & 1.000 & 0.979 & 0.989 \\
+LAML & 130 & 1.000 & 1.000 & 1.000 & UCEC & 329 & 0.947 & 0.985 & 0.966 \\
+LGG  & 405 & 1.000 & 0.998 & 0.999 & UCS  & 44  & 0.907 & 0.886 & 0.897 \\
+LIHC & 285 & 0.997 & 0.990 & 0.993 & UVM  & 64  & 0.985 & 1.000 & 0.992 \\
+LUAD & 358 & 0.975 & 0.983 & 0.979 & \multicolumn{4}{l}{\textit{Macro avg F1} = 0.9461} \\
+LUSC & 285 & 0.972 & 0.961 & 0.967 & \multicolumn{4}{l}{\textit{Weighted avg F1} = 0.9720} \\
+\bottomrule
+\end{tabular}
+\end{table*}
+
+
+% ---------------------------------------------------------------------
+% [4] REPLACE Table IV (tab:wilcoxon) — CORRECTED 2026-11-24.
+%     CIs and p-values now both use the Nadeau-Bengio variance
+%     (1/J + n_test/n_train) so they are mutually consistent.
+%     25 paired folds, J=25, df=24, two-sided alpha=0.05.
+% ---------------------------------------------------------------------
+\begin{table}[htbp]
+\caption{Paired comparison over 25 repeated-CV folds within the training
+partition. Mean difference (XGBoost $-$ baseline), 95\% confidence interval,
+Cohen's $d$, and Nadeau--Bengio corrected two-sided $p$-value. Intervals and
+$p$-values are computed from the same corrected variance.}
+\label{tab:wilcoxon}
+\centering
+\footnotesize
+\begin{tabular}{llccccc}
+\toprule
+Baseline & Metric & Mean $\Delta$ & 95\% CI & $d$ & $p_{\mathrm{NB}}$ \\
+\midrule
+\multirow{4}{*}{SVM}
+ & Weighted precision & +0.0060 & [0.0015, 0.0105] & 1.48 & 0.011 \\
+ & Weighted F1        & +0.0060 & [0.0017, 0.0103] & 1.55 & 0.008 \\
+ & Accuracy           & +0.0061 & [0.0020, 0.0102] & 1.64 & 0.006 \\
+ & Cohen's $\kappa$   & +0.0064 & [0.0021, 0.0107] & 1.64 & 0.006 \\
+ & Macro-F1$^{\dagger}$ & +0.0070 & [$-$0.0145, 0.0283] & 0.36 & 0.509 \\
+\midrule
+\multirow{4}{*}{Logistic Reg.}
+ & Weighted precision & +0.0079 & [0.0030, 0.0128] & 1.78 & 0.003 \\
+ & Weighted F1        & +0.0077 & [0.0031, 0.0123] & 1.88 & 0.002 \\
+ & Accuracy           & +0.0076 & [0.0031, 0.0120] & 1.89 & 0.002 \\
+ & Cohen's $\kappa$   & +0.0080 & [0.0033, 0.0126] & 1.90 & 0.002 \\
+ & Macro-F1$^{\dagger}$ & +0.0176 & [$-$0.0060, 0.0413] & 0.83 & 0.137 \\
+\bottomrule
+\multicolumn{6}{p{0.95\columnwidth}}{\footnotesize $^{\dagger}$Not significant after
+Nadeau--Bengio correction; the advantage is restricted to weighted metrics.}
+\end{tabular}
+\end{table}
+% NOTE: requires \usepackage{multirow} in the preamble.
+
+
+% ---------------------------------------------------------------------
+% [5] REPLACE Table V (tab:ablation) — leave-one-modality-out WITH paired
+%     uncertainty (25 paired folds, Nadeau-Bengio corrected).
+% ---------------------------------------------------------------------
+\begin{table}[htbp]
+\caption{Leave-one-modality-out ablation for XGBoost. Point estimates use the
+untouched 20\% holdout and 5-fold CV within the training partition; the last two
+columns give the paired difference versus the full model over 25 repeated folds
+(Nadeau--Bengio corrected).}
+\label{tab:ablation}
+\centering
+\footnotesize
+\begin{tabular}{lcccccc}
+\toprule
+Configuration & \#Feat. & Hold.\ acc & CV acc & CV m-F1 & $\Delta$m-F1 vs full & $p$ \\
+\midrule
+Full multi-omics      & 9{,}844 & 0.9778 & \textbf{0.9725} & 0.9443 & --- & --- \\
+without mRNA          & 6{,}627 & 0.9790 & 0.9681 & 0.9454 & +0.0064 [$-$0.013, 0.026] & 0.507 \\
+without miRNA         & 9{,}461 & 0.9681 & 0.9645 & 0.9259 & +0.0125 [$-$0.004, 0.029] & 0.128 \\
+without CNV           & 6{,}739 & 0.9790 & 0.9722 & 0.9479 & $-$0.0016 [$-$0.019, 0.015] & 0.851 \\
+without Methylation   & 6{,}705 & 0.9705 & 0.9657 & 0.9296 & +0.0093 [$-$0.001, 0.020] & 0.078 \\
+mRNA-only             & 3{,}217 & 0.9603 & 0.9547 & 0.9038 & +0.0368 [0.025, 0.049] & $<$0.001 \\
+\bottomrule
+\end{tabular}
+\end{table}
+% Interpretation: only mRNA-only is significantly worse than the full model.
+% Removing any single modality does not significantly change macro-F1.
+
+
+% ---------------------------------------------------------------------
+% [6] ADD to end of Sec. III-A (Preprocessing) — leakage statement.
+%     This is TRUE for this codebase: CV now runs inside the train split.
+% ---------------------------------------------------------------------
+To prevent information leakage, the dataset was first partitioned using a
+stratified 80/20 train--test split. All data-dependent preprocessing
+operations, including missing-value imputation and feature scaling, were fitted
+exclusively on the training data. During cross-validation, the scaling
+parameters were independently estimated on each training fold and applied to
+its corresponding validation fold, and all cross-validation was performed
+strictly within the 80\% training partition. The 20\% holdout set was kept
+separate from model selection and cross-validation and was used only for the
+final evaluation. We verified that the published matrices contain no missing
+values, so the imputation step is a defensive no-op and cannot propagate
+information across the split.
+
+
+% ---------------------------------------------------------------------
+% [7] ADD to end of Sec. III-E (ORA methods) — non-causal interpretation
+%     (reviewer comment 4C)
+% ---------------------------------------------------------------------
+\textbf{Interpretation and limitations.}
+The SHAP-based feature rankings and the subsequent ORA provide model-level
+predictive explanations and statistical associations with annotated cell-type
+signatures. These analyses do not establish causal relationships between
+individual genes, molecular pathways, and tumour development. The observed
+epithelial and alveolar lineage enrichment should therefore be interpreted as
+functional context for the model-derived features rather than as evidence of
+causal biological mechanisms. Furthermore, the significant enrichment observed
+at the top-150 gene cutoff was not retained at the top-100 or top-200 cutoffs,
+indicating sensitivity to the feature-selection threshold. These findings
+should therefore be considered exploratory and require independent biological
+validation.
+
+
+% ---------------------------------------------------------------------
+% [8] REPLACE the ORA result sentence (Sec. IV-E) — reviewer comment 4C
+% ---------------------------------------------------------------------
+% FROM:
+%   ... indicates that the mRNA features selected by the multi-omics framework
+%   suggests that the model-ranked mRNA features capture lineage-associated
+%   molecular patterns relevant to tumor-type classification.
+% TO:
+The prominent representation of epithelial lineages (including urothelial,
+luminal epithelial, and basal-like cells) alongside lung-specific tissues
+indicates that the model-ranked mRNA features capture lineage-associated
+molecular patterns relevant to tumour-type classification; this is an
+association observed in the model's feature rankings and not evidence of a
+causal mechanism.
+
+
+% ---------------------------------------------------------------------
+% [9] REPLACE abstract sentences — new CV numbers + corrected claims
+%     (audit: macro-F1 superiority is NOT supported; mRNA "improvement" is NOT supported)
+% ---------------------------------------------------------------------
+% FROM:
+%   Under a 5-fold stratified CV, XGBoost attains the best performance
+%   (Accuracy: 0.9756, Macro-F1: 0.9518, Cohen's kappa: 0.9744). ...
+%   recovers a significant (FDR <= 0.05) epithelial lineage signal at the
+%   mRNA 150-gene cutoff. ... validating the necessity of a multi-omics approach.
+% TO:
+Under a 5-fold stratified cross-validation performed within the 80\% training
+partition, XGBoost attains the best performance (Accuracy: 0.9725, Macro-F1:
+0.9443, Cohen's $\kappa$: 0.9712). Corrected paired comparisons over 25
+repeated folds show that XGBoost significantly outperforms both the linear SVM
+and Logistic Regression on weighted F1 and accuracy (Nadeau--Bengio corrected
+$p < 0.01$); a statistically significant macro-F1 advantage was not established.
+For interpretability, the proposed work adopts an over-representation analysis
+and identifies an exploratory epithelial lineage-associated enrichment signal
+(FDR $\leq$ 0.05) at the top-150 mRNA feature cutoff. Leave-one-modality-out
+experiments show that an mRNA-only model is significantly worse than the full
+multi-omics model (macro-F1 0.9038 versus 0.9443), whereas removing any single
+modality does not significantly reduce macro-F1. These results indicate that
+global feature importance does not necessarily imply modality-level predictive
+necessity.
+
+
+% ---------------------------------------------------------------------
+% [10] REPLACE conclusion — audit-corrected
+% ---------------------------------------------------------------------
+For the 32-class pan-cancer classification, XGBoost achieved the strongest
+overall performance and the highest cross-validation stability among the
+evaluated classifiers, with cross-validated weighted precision 0.9730, F1 0.9719,
+accuracy 0.9725, Cohen's $\kappa$ 0.9712 and macro-F1 0.9443. Paired comparisons
+over 25 repeated folds, corrected for fold dependence, showed XGBoost to be
+significantly better than both the linear SVM and Logistic Regression on
+weighted precision, F1, accuracy and $\kappa$ ($p \leq 0.011$); differences on
+macro-F1 did not reach significance after correction. Background-constrained
+over-representation analysis identified an exploratory epithelial and alveolar
+lineage-associated enrichment among the top-ranked mRNA features at the
+150-gene cutoff; these findings provide statistical context for the model-derived
+predictions but do not establish causal biological relationships. A
+leave-one-modality-out ablation showed that an mRNA-only model was significantly
+worse than the full multi-omics model (macro-F1 0.9038 versus 0.9443,
+$p < 0.001$), while removing any individual modality did not significantly
+reduce macro-F1. The discriminative signal is therefore distributed across
+modalities rather than localised in a single one, and global feature importance
+should not be read as evidence of modality-level necessity.
+
+
+% ---------------------------------------------------------------------
+% [11] ADD to Limitations — statistical qualification (audit-corrected)
+% ---------------------------------------------------------------------
+After correcting for the dependence between repeated-CV folds
+(Nadeau--Bengio), the advantage of XGBoost remains statistically significant on
+weighted precision, weighted F1, accuracy and Cohen's $\kappa$ ($p \leq 0.011$),
+but not on macro-F1 (versus SVM $p = 0.509$; versus Logistic Regression
+$p = 0.137$). Claims of superiority are therefore restricted to the weighted
+metrics. The fold-level variance of macro-F1 is dominated by the two smallest
+classes (OV, $n = 7$ within the training partition; READ, $n = 73$), so
+macro-averaged conclusions for these classes should be treated as indicative
+only.
+
+The leave-one-modality-out differences were likewise assessed with paired,
+Nadeau--Bengio corrected comparisons over 25 folds. Only the mRNA-only model
+differed significantly from the full model (macro-F1 0.9038 versus 0.9443,
+$p < 0.001$); removing any single modality did not produce a significant change
+in macro-F1, and removing CNV did not significantly change accuracy. These
+ablations therefore support the claim that importance rankings do not imply
+modality-level necessity, but they do not establish that any individual modality
+is dispensable in general.
+
+In addition, post-hoc ORA results are sensitive to the feature-selection cutoff:
+statistically significant lineage enrichment ($\mathrm{FDR} < 0.05$) holds at
+$N = 150$ SHAP-ranked mRNA features but does not persist at $N = 100$ or
+$N = 200$.

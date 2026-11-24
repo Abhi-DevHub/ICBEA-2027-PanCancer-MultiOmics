@@ -1,0 +1,5 @@
+model,cv_mean_precision_weighted,cv_std_precision_weighted,cv_mean_f1_weighted,cv_std_f1_weighted,cv_mean_accuracy,cv_std_accuracy,cv_mean_kappa,cv_std_kappa,cv_mean_macro_f1,cv_std_macro_f1
+XGBoost,0.97302,0.0028,0.97188,0.003,0.97248,0.0029,0.97115,0.00304,0.94431,0.01801
+SVM,0.96647,0.00445,0.9656,0.00452,0.96632,0.00436,0.96469,0.00457,0.94054,0.01822
+Random Forest,0.95285,0.00593,0.94614,0.00491,0.95053,0.00503,0.94811,0.00527,0.89359,0.01226
+Logistic Regression,0.96245,0.00587,0.96184,0.0058,0.96256,0.00556,0.96075,0.00583,0.92904,0.02064

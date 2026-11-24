@@ -1,0 +1,7 @@
+configuration,n_features,holdout_accuracy,holdout_macro_f1,cv_accuracy,cv_macro_f1,cv_weighted_f1
+full_multi_omics,9844,0.9778,0.9534,0.9725,0.9443,0.9719
+without_mRNA,6627,0.979,0.9394,0.9681,0.9454,0.9675
+without_miRNA,9461,0.9681,0.9327,0.9645,0.9259,0.9633
+without_CNV,6739,0.979,0.9569,0.9722,0.9479,0.9717
+without_Methy,6705,0.9705,0.9454,0.9657,0.9296,0.9646
+mRNA_only,3217,0.9603,0.9219,0.9547,0.9038,0.9531
